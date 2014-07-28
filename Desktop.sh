@@ -27,7 +27,6 @@ passwd talsemgeest
 
 visudo
 
-pacman -S 
 pacman -S smbclient xorg-server xorg-server-utils nvidia lib32-nvidia-libgl ttf-dejavu wget
 
 su talsemgeest <<'EOF'
@@ -40,5 +39,6 @@ makepkg -s
 EOF
 pacman -U /home/talsemgeest/packages/packer/packer-*-any.pkg.tar.xz
 
-echo "1. Add hostname to /etc/hosts."
-echo "2. grub-install --target=i386-pc --recheck /dev/sdx"
+echo "Enter disk letter to install Grub to (e.g. \"a\" for /dev/sda"
+read =n 1 disk
+grub-install --target=i386-pc --recheck /dev/sd"$disk"
